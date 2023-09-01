@@ -6,6 +6,7 @@ import com.psp.view.MainView
 import com.psp.view.SpriteEditor
 import com.psp.view.Welcome
 import javafx.application.Platform
+import javafx.event.EventHandler
 import javafx.stage.FileChooser
 import tornadofx.Controller
 import tornadofx.chooseDirectory
@@ -64,10 +65,9 @@ class MainViewController : Controller() {
 
     fun newSpriteEditorTab() {
         if (view.spriteEditorEnabled.value) {
-            view.newTab(find<SpriteEditor>("cache" to CacheManager.cache!!))
-                .closableProperty().addListener { _, _, _ ->
-                    view.spriteEditorEnabled.value = true
-                }
+            view.newTab(find<SpriteEditor>("cache" to CacheManager.cache!!)).onClosed = EventHandler {
+                view.spriteEditorEnabled.value = true
+            }
             view.spriteEditorEnabled.value = false
         }
     }

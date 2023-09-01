@@ -7,10 +7,13 @@ import javafx.geometry.Pos
 import javafx.scene.control.ListView
 import javafx.scene.control.TextArea
 import javafx.scene.control.TextField
+import javafx.scene.image.Image
 import javafx.scene.image.ImageView
+import javafx.scene.input.MouseEvent
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.Priority
 import tornadofx.*
+import javax.imageio.ImageIO
 
 class SpriteEditor : Editor("Sprite Editor") {
 
@@ -36,7 +39,18 @@ class SpriteEditor : Editor("Sprite Editor") {
                 vgrow = Priority.ALWAYS
             }
 
-            add(searchField)
+            hbox {
+                searchField.hgrow = Priority.ALWAYS
+                add(searchField)
+                imageview(SpriteEditor::class.java.getResource("/clear.png")?.toString()) {
+                    addEventHandler(MouseEvent.MOUSE_CLICKED) {
+                        controller.clearSearchField()
+                        it.consume()
+                    }
+                }
+
+                spacing = 5.0
+            }
             add(spritesList)
 
             spacing = 10.0
@@ -103,17 +117,6 @@ class SpriteEditor : Editor("Sprite Editor") {
         }
 
         padding = Insets(10.0, 10.0, 10.0, 10.0)
-    }
-
-    init {
-        spritesList.selectionModel.selectedItemProperty().addListener { _, _, nv ->
-            isSpriteSelected.value = nv != null
-            selectedSpriteId = nv
-        }
-        framesList.selectionModel.selectedItemProperty().addListener { _, _, nv ->
-            isFrameSelected.value = nv != null
-            selectedFrameId = nv
-        }
     }
 
     override fun onTabSelected() {

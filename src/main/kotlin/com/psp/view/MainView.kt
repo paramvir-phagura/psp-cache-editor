@@ -28,9 +28,13 @@ class MainView : View("Pavan's Cache Editor") {
                         item("Open").action {
                             controller.locateCache()
                         }
-                        item("Save")
                         separator()
-                        item("Settings")
+                        item("About") {
+                            isDisable = true
+                        }
+                        item("Settings") {
+                            isDisable = true
+                        }
                         item("Exit").action {
                             controller.exit()
                         }
@@ -43,6 +47,12 @@ class MainView : View("Pavan's Cache Editor") {
                                 controller.newSpriteEditorTab()
                             }
                         }
+                        item("Model Editor") {
+                            isDisable = true
+                        }
+                        item("Music Editor") {
+                            isDisable = true
+                        }
                     }
                 }
             }
@@ -50,6 +60,7 @@ class MainView : View("Pavan's Cache Editor") {
         center = editorTabPane
 
         bottom = vbox {
+            // TODO Action button (e.g., open directory containing sprites for convenience)
             add(statusLabel)
 
             spacing = 10.0
@@ -80,6 +91,12 @@ class MainView : View("Pavan's Cache Editor") {
     fun success(msg: String) {
         statusLabel.text = msg
         statusLabel.textFill = Color.GREEN
+        statusLabel.font = Constants.boldFont
+    }
+
+    fun warn(msg: String) {
+        statusLabel.text = msg
+        statusLabel.textFill = Color.BLUE
         statusLabel.font = Constants.boldFont
     }
 
