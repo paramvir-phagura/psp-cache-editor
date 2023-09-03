@@ -5,9 +5,9 @@ import com.psp.view.MainView
 import com.psp.view.SpriteEditor
 import javafx.embed.swing.SwingFXUtils
 import javafx.stage.FileChooser
-import net.openrs.cache.Cache
-import net.openrs.cache.Container
-import net.openrs.cache.sprite.Sprite
+import com.runescape.cache.Cache
+import com.runescape.cache.Container
+import com.runescape.cache.sprite.Sprite
 import tornadofx.*
 import java.io.File
 import java.nio.file.Files
@@ -183,7 +183,13 @@ class SpriteEditorController : Controller() {
 
     private fun pack() {
         try {
-            cache.write(8, sprite.id, Container(sprite.container.type, sprite.encode(), sprite.container.version))
+            cache.write(8, sprite.id,
+                Container(
+                    sprite.container.type,
+                    sprite.encode(),
+                    sprite.container.version
+                )
+            )
             mainView.success("Packed to cache!")
         } catch (e: Exception) {
             e.printStackTrace()

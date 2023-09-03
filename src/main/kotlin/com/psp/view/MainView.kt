@@ -11,7 +11,7 @@ import javafx.scene.paint.Color
 import javafx.scene.text.Font
 import tornadofx.*
 
-class MainView : View("Pavan's Cache Editor") {
+class MainView : View("psp-cache-editor") {
 
     private val controller: MainViewController by inject()
 

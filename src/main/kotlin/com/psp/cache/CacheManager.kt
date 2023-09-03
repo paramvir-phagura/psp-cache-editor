@@ -1,8 +1,8 @@
 package com.psp.cache
 
 import javafx.beans.property.SimpleBooleanProperty
-import net.openrs.cache.Cache
-import net.openrs.cache.FileStore
+import com.runescape.cache.Cache
+import com.runescape.cache.FileStore
 import java.io.File
 
 object CacheManager {
