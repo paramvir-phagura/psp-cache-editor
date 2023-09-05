@@ -18,8 +18,9 @@ class MainView : View("psp-cache-editor") {
     val editorTabPane = TabPane()
     val statusLabel = Label()
 
-    val cacheControlsEnabled = SimpleBooleanProperty(false)
-    val spriteEditorEnabled = SimpleBooleanProperty(false)
+    val cacheControlsEnabled = SimpleBooleanProperty()
+    val spriteEditorEnabled = SimpleBooleanProperty()
+    val cs2EditorEnabled = SimpleBooleanProperty()
 
     override val root = borderpane {
         top = vbox {
@@ -47,6 +48,12 @@ class MainView : View("psp-cache-editor") {
                                 controller.newSpriteEditorTab()
                             }
                         }
+                        item("Cs2 Editor") {
+                            enableWhen(cs2EditorEnabled)
+                            action {
+                                controller.newCs2EditorTab()
+                            }
+                        }
                         item("Model Editor") {
                             isDisable = true
                         }
@@ -71,6 +78,7 @@ class MainView : View("psp-cache-editor") {
     init {
         cacheControlsEnabled.addListener { _, _, nv ->
             spriteEditorEnabled.value = nv
+            cs2EditorEnabled.value = nv
         }
     }
 

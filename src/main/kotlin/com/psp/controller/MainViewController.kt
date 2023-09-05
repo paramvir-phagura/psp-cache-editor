@@ -2,6 +2,7 @@ package com.psp.controller
 
 import com.psp.cache.CacheManager
 import com.psp.util.Preferences
+import com.psp.view.Cs2Editor
 import com.psp.view.MainView
 import com.psp.view.SpriteEditor
 import com.psp.view.Welcome
@@ -69,6 +70,15 @@ class MainViewController : Controller() {
                 view.spriteEditorEnabled.value = true
             }
             view.spriteEditorEnabled.value = false
+        }
+    }
+
+    fun newCs2EditorTab() {
+        if (view.cs2EditorEnabled.value) {
+            view.newTab(find<Cs2Editor>("cacheDir" to CacheManager.cacheDir!!)).onClosed = EventHandler {
+                view.cs2EditorEnabled.value = true
+            }
+            view.cs2EditorEnabled.value = false
         }
     }
 

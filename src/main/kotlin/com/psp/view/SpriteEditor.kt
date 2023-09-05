@@ -42,7 +42,7 @@ class SpriteEditor : Editor("Sprite Editor") {
             hbox {
                 searchField.hgrow = Priority.ALWAYS
                 add(searchField)
-                imageview(SpriteEditor::class.java.getResource("/clear.png")?.toString()) {
+                imageview(SpriteEditor::class.java.getResource("/images/clear.png")?.toString()) {
                     addEventHandler(MouseEvent.MOUSE_CLICKED) {
                         controller.clearSearchField()
                         it.consume()

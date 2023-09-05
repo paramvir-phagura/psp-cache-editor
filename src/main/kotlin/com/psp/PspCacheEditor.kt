@@ -6,6 +6,7 @@ import com.psp.util.Preferences
 import javafx.scene.image.Image
 import javafx.stage.Stage
 import tornadofx.App
+import tornadofx.importStylesheet
 
 class PspCacheEditor : App(MainView::class) {
 
@@ -14,12 +15,16 @@ class PspCacheEditor : App(MainView::class) {
     init {
         try {
             Preferences.instance = configSerializer.deserialize(Preferences::class.java)!!
+//            importStylesheet("/css/theme.css")
+//            importStylesheet("/css/highlight.css")
+//            importStylesheet("/css/custom.css")
+//            importStylesheet("/css/code-area-ui.css")
         } catch (_: Exception) {
         }
     }
 
     override fun start(stage: Stage) {
-        stage.icons.add(Image(this::class.java.getResource("/favicon.png")!!.toString()))
+        stage.icons.add(Image(this::class.java.getResource("/images/favicon.png")!!.toString()))
         super.start(stage)
     }
 

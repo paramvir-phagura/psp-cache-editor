@@ -19,8 +19,8 @@ class SpriteEditorController : Controller() {
 
     private val mainView: MainView by inject()
     private val view: SpriteEditor by inject()
-
     private val cache: Cache by param()
+
     private val sprite
         get() = Sprite.get(cache, view.selectedSpriteId!!)
     private var frame
@@ -35,7 +35,7 @@ class SpriteEditorController : Controller() {
     val emptySprite
         get() =
             try {
-                SwingFXUtils.toFXImage(ImageIO.read(this::class.java.getResourceAsStream("/empty.png")), null)
+                SwingFXUtils.toFXImage(ImageIO.read(this::class.java.getResourceAsStream("/images/empty.png")), null)
             } catch (e: Exception) {
                 e.printStackTrace()
                 null
@@ -103,12 +103,12 @@ class SpriteEditorController : Controller() {
             view.framesList.selectionModel.select(null)
 
             if (nv == null || nv.isEmpty()) {
-                populateSpritesView()
+                populateSpritesList()
             } else {
-                populateSpritesView { it.toString().contains(nv) }
+                populateSpritesList { it.toString().contains(nv) }
             }
         }
-        populateSpritesView()
+        populateSpritesList()
     }
 
     fun addFrame() {
@@ -161,7 +161,7 @@ class SpriteEditorController : Controller() {
         view.detailsArea.text = "No details to show."
     }
 
-    private fun populateSpritesView(filter: (Int) -> Boolean = { true }) {
+    private fun populateSpritesList(filter: (Int) -> Boolean = { true }) {
         for (i in 0..<cache.getFileCount(8)) {
             if (filter(i)) {
                 view.spritesList.items += i
