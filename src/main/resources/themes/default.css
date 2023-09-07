@@ -1,0 +1,16 @@
+.h1, .h2 {
+    -fx-font-family: "Roboto";
+}
+
+.h1 {
+    -fx-font-size: 20px;
+}
+
+.h2 {
+    -fx-font-size: 14px;
+}
+
+* .label, .tab .tab-label, .list-view .label, .button . {
+    -fx-font-family: "Roboto";
+    -fx-font-size: 14px;
+}

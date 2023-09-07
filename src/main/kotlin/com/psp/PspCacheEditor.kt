@@ -15,10 +15,8 @@ class PspCacheEditor : App(MainView::class) {
     init {
         try {
             Preferences.instance = configSerializer.deserialize(Preferences::class.java)!!
-//            importStylesheet("/css/theme.css")
-//            importStylesheet("/css/highlight.css")
-//            importStylesheet("/css/custom.css")
-//            importStylesheet("/css/code-area-ui.css")
+            importStylesheet("/themes/dracula.css")
+            importStylesheet("/themes/buttons.css")
         } catch (_: Exception) {
         }
     }

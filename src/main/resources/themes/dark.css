@@ -1,0 +1,30 @@
+* {
+    -fx-primary-color: #2b2d30;
+    -fx-secondary-color: black;
+
+    -fx-font-family: "Roboto";
+    -fx-font-size: 13px;
+    -fx-text-fill: white;
+}
+
+.root, .tab-header-area .tab-header-background {
+    -fx-background-color: -fx-secondary-color;
+}
+
+.menu-bar, .menu, .menu-item {
+    -fx-background-color: -fx-primary-color;
+}
+
+.menu-item:hover, .button:hover {
+    -fx-background-color: #4d5056;
+}
+
+.button {
+    -fx-background-color: #2b2d30;
+    -fx-border-color: white;
+}
+
+.h1 {
+    /*-fx-font-family: "Roboto";*/
+    -fx-font-size: 20px;
+}

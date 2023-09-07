@@ -46,7 +46,7 @@ class MainViewController : Controller() {
             false
         } else if (!CacheManager.load(cacheDir)) {
             error("Error loading cache.", owner = view.currentStage)
-            view.error("Error loading cache.")
+            view.error("Try checking if the directory exists.")
             false
         } else {
             Preferences.instance.addRecent(cacheDir.path.toString())

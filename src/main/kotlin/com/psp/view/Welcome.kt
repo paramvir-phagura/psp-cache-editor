@@ -27,10 +27,14 @@ class Welcome : Editor("Welcome!") {
             font = Constants.font
         }
 
-        button("Locate Cache").action {
-            if (mainController.locateCache()) {
-                mainController.newSpriteEditorTab()
+        button("Locate Cache") {
+            action {
+                if (mainController.locateCache()) {
+                    mainController.newSpriteEditorTab()
+                }
             }
+
+            styleClass += "record-sales"
         }
 
         titledpane("Recently opened") {
